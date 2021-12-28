@@ -1,17 +1,20 @@
 let nom = prompt("ingresa tu nombre: ")
 alert("Bienvenido a mi pagina! "+ nom + "!")
-var x = prompt("Ahora ingresa un numero: ", "0")
-var y = prompt("Ingresa otro: ", "0")
-var num1 = parseInt(x)
-var num2 = parseInt(y)
+let x = prompt("Ahora ingresa un numero entre 1 y 100: ", "1")
+let num1 = parseInt(x)
+let suma = num1 + 5
+let resta = num1 - 5
+let mul = num1 * 5
+let div = num1 / 5
+if (num1 < 100 && num1 > 0){
+    alert("En la consola encontraras tu numero sumado, restado, multiplicado y dividido por 5")
+    console.log("Tu numero sumandole 5: ", suma)
+    console.log("Tu numero restandole 5: ", resta)
+    console.log("tu numero multiplicado por 5: ", mul)
+    console.log("Tu numero dividido por 5: ", div)
+}
+else {
+    alert("No haz cumplido con la consigna")
+}
+alert("Hasta luego " + nom +"!")
 
-var suma = num1 + num2
-var resta = num1 - num2
-var mul = num1 * num2
-var div = num1 / num2
-console.log("los numeros sumados dan : " + suma)
-console.log("los numeros restados dan: " + resta)
-console.log("los numeros multiplicados dan: " + mul)
-console.log("los numeros divididos dan: " + div)
-
-alert(nom + " ,en la consola encontraras los resultados")
