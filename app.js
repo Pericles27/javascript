@@ -1,16 +1,31 @@
-const multiplicar = (x,y) => x*y;
-const dividir = (x,y) => x/y;
-function saludar(){
-    let nombre=prompt("Dime tu nombre: ")
-    alert("Bienvenido al simulador de cuotas, "+nombre+"!")
+function multiplo(valor, multiplo){
+    resto = valor % multiplo;
+    if(resto==0)
+        return true;
+    else
+        return false;
 }
-saludar()
-let a = prompt("¿Iniciamos?: ")
-while (a == "si"){
-    let valor = parseInt(prompt("Ingresa el valor del producto: "))
-    let cuotas = parseInt(prompt("Ingresa el numero de cuotas: "))
-    alert("serán "+cuotas+" cuotas de $"+dividir(valor,cuotas))
-    a = prompt("¿Seguimos?: si/no")
+function num(){
+    let numero = parseInt(prompt("Ingresa un numero: "))
+    return numero
 }
-alert("fin de la actividad")
-
+function nombre(){
+    let nom = prompt("Ingresa tu nombre: ")
+    return nom
+}
+let mul3 =[]
+let mul5=[]
+let saludo = nombre()
+alert("Bienvenido, "+saludo+"!")
+for (let i = 0; i<5 ; i++ ){
+    let numero = num()
+    if (multiplo(numero,3)){
+        mul3.push(numero);
+    }
+    if(multiplo(numero,5)){        
+        mul5.push(numero);
+    }
+}
+alert("Los siguientes numeros ingresados son multiplos de 3: " + mul3)
+alert("los siguientes numeros ingresados son multiplos de 5: " + mul5)
+alert("Hasta luego, "+saludo+"!")
