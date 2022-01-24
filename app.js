@@ -22,7 +22,7 @@ function saludar(x){
     if (x==0){
         alert("Bienvenido al simulador "+nomb)
     } else{
-        alert("Hasta luego  "+nomb)
+        alert("Hasta luego "+nomb)
     }
 }
 let nomb = nombre()
