@@ -1,9 +1,14 @@
-function multiplo(valor, multiplo){
-    resto = valor % multiplo;
+function multiplo(){
+    let mul = parseInt(prompt("Ingresa el multiplo que quieres buscar: "))
+    resto = num() % mul;
     if(resto==0)
-        return true;
+        return ("si");
     else
-        return false;
+        return ("no");
+}
+function res (){
+    let respuesta =(("El numero ingresado "+ multiplo()+ " es multiplo"));
+    alert(respuesta)
 }
 function num(){
     let numero = parseInt(prompt("Ingresa un numero: "))
@@ -13,19 +18,14 @@ function nombre(){
     let nom = prompt("Ingresa tu nombre: ")
     return nom
 }
-let mul3 =[]
-let mul5=[]
-let saludo = nombre()
-alert("Bienvenido, "+saludo+"!")
-for (let i = 0; i<5 ; i++ ){
-    let numero = num()
-    if (multiplo(numero,3)){
-        mul3.push(numero);
-    }
-    if(multiplo(numero,5)){        
-        mul5.push(numero);
+function saludar(x){
+    if (x==0){
+        alert("Bienvenido al simulador "+nomb)
+    } else{
+        alert("Hasta luego  "+nomb)
     }
 }
-alert("Los siguientes numeros ingresados son multiplos de 3: " + mul3)
-alert("los siguientes numeros ingresados son multiplos de 5: " + mul5)
-alert("Hasta luego, "+saludo+"!")
+let nomb = nombre()
+saludar(0)
+res()
+saludar(2)
