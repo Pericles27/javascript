@@ -10,17 +10,17 @@ class productos{
         this.precio=this.precio *1.21;
     }
 }
-function cantidad_cuotas(v) {
-    const n = lista_productos.find(n => n.codigo == v)
-    return (n.cantidad)
+function cantidad_cuotas(producto) {
+    const cuotas = lista_productos.find(cuotas => cuotas.codigo == producto)
+    return (cuotas.cantidad)
 }
-function pre(v) {
-    const n = lista_productos.find(n => n.codigo == v)
-    return (n.precio)
+function pre(producto) {
+    const cod = lista_productos.find(cod => cod.codigo == producto)
+    return (cod.precio)
 }
-function nombre_producto(v) {
-    const n = lista_productos.find(n => n.codigo == v)
-    return (n.nombre)
+function nombre_producto(producto) {
+    const pro = lista_productos.find(pro => pro.codigo == producto)
+    return (pro.nombre)
 }
 
 const dividir = (x,y) => x/y;
@@ -33,10 +33,6 @@ const lista_productos=[PS5,XBS,DLS,COD,NSW]
 
 let boton = document.getElementById("boton")
 boton.onclick = () =>{enviarAlerta(respuesta())}
-
-
-let seleccion = document.getElementById("opcion")
-seleccion.addEventListener("change",respuesta)
 
 function respuesta(){
     let res = document.getElementById("opcion").value;
@@ -61,12 +57,19 @@ function crear(codigo){
                             <h3>  Producto: ${nombre_producto(codigo)}</h3>
                             <p> Precio del producto con el IVA incluido:  $${pre(codigo)}</p>
                             <p>Cantidad de cuotas sin interes disponibles: ${cantidad_cuotas(codigo)}
-
+                            <br><br>
+                            <form class="form">
+                                <label for="pagos">Ingresá la cantidad de cuotas en las que queres pagar:</label>
+                                <input type="number" name="pagos" min="1" max="${cantidad_cuotas(codigo)}">
+                                <button type="button" value="Enviar" id="boton2">Enviar</button>
+                            </form>
                             `;
     document.body.appendChild(contenedor);
 }
 
-
+function finalizar(){
+    borrar()
+}
 
 
 
