@@ -35,27 +35,26 @@ const NSW = new Producto("Nintendo Switch",125000,9,"NSW")
 const lista_productos=[PS5,XBS,DLS,COD,NSW]
 
 
-let boton = document.getElementById("boton")
-boton.onclick = () =>{enviarAlerta(document.getElementById("opcion").value)}
+$("#boton").click(function(){
+    enviarAlerta(document.getElementById("opcion").value)
+});
+
 
 function enviarAlerta(codigo){
     for (Producto of lista_productos){
         Producto.iva()
     }
     borrar_catalogo()
-    let contenedor = document.createElement("div");
-    contenedor.innerHTML = `<h3> ID: ${codigo}</h3>
-                            <h3>  Producto: ${nombre_producto(codigo)}</h3>
-                            <p> Precio del producto con el IVA incluido:  $${precio_del_producto(codigo)}</p>
-                            <p>Cantidad de cuotas sin interes disponibles: ${cantidad_cuotas(codigo)}
-                            <br><br>
-                            <form class="Form">
-                                <label for="pagos">Ingresá la cantidad de cuotas en las que queres pagar:</label>
-                                <input type="number" name="pagos" min="1" max="${cantidad_cuotas(codigo)}" id="pagos">
-                                <button type="submit">Enviar</button> 
-                            </form>
-                            `;
-    document.body.appendChild(contenedor);
+    $('body').append(`  <h3> ID: ${codigo}</h3>
+                        <h3>  Producto: ${nombre_producto(codigo)}</h3>
+                        <p> Precio del producto con el IVA incluido:  $${precio_del_producto(codigo)}</p>
+                        <p>Cantidad de cuotas sin interes disponibles: ${cantidad_cuotas(codigo)}
+                        <br><br>
+                        <form class="Form">
+                            <label for="pagos">Ingresá la cantidad de cuotas en las que queres pagar:</label>
+                            <input type="number" name="pagos" min="1" max="${cantidad_cuotas(codigo)}" id="pagos">
+                            <button type="submit" id="boton2">Enviar</button> 
+                        </form>`);
 }
 
 function borrar_catalogo(){
@@ -64,6 +63,7 @@ function borrar_catalogo(){
     let content = document.getElementsByClassName("Form");
     content[0].parentNode.removeChild(content[0]);
 }
+
 
 
 
