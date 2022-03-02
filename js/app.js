@@ -45,24 +45,41 @@ function enviarAlerta(codigo){
         Producto.iva()
     }
     borrar_catalogo()
-    $('body').append(`  <h3> ID: ${codigo}</h3>
-                        <h3>  Producto: ${nombre_producto(codigo)}</h3>
-                        <p> Precio del producto con el IVA incluido:  $${precio_del_producto(codigo)}</p>
-                        <p>Cantidad de cuotas sin interes disponibles: ${cantidad_cuotas(codigo)}
-                        <br><br>
-                        <form class="Form">
-                            <label for="pagos">Ingresá la cantidad de cuotas en las que queres pagar:</label>
-                            <input type="number" name="pagos" min="1" max="${cantidad_cuotas(codigo)}" id="pagos">
-                            <button type="submit" id="boton2">Enviar</button> 
+    $('body').append(`
+                        <section id="producto">
+                            <h3> ID: ${codigo}</h3>
+                            <h3>  Producto: ${nombre_producto(codigo)}</h3>
+                            <p> Precio del producto con el IVA incluido:  $${precio_del_producto(codigo)}</p>
+                            <p>Cantidad de cuotas sin interes disponibles: ${cantidad_cuotas(codigo)}
+                            <br><br>
+                        </section>
+                        <form class="Form" id="formulario" method="post">
+                            <fieldset>
+                                <legend>Cuotas</legend>
+                                <br><br>
+                                <label for="pagos">Ingresá la cantidad de cuotas en las que queres pagar:</label>
+                                <input type="number" name="pagos" min="1" max="${cantidad_cuotas(codigo)}" id="pagos">
+                                <input type="button" id="boton2" value="Enviar">
+                            </fieldset>
                         </form>`);
+    $("#boton2").click(function(){
+        let nro_pagos = document.getElementById("pagos");
+        localStorage.setItem("carrito",nro_pagos)
+        $("#formulario").fadeOut("fast")
+        $("#producto").fadeOut("fast")
+        $("body").append(`
+            <h1>¿Quieres comprar algo más?</h1>`)
+        $(".Catalogo").fadeIn("fast")
+    });
 }
 
+
 function borrar_catalogo(){
-    let contenido = document.getElementsByClassName("Catalogo");
-    contenido[0].parentNode.removeChild(contenido[0]);
-    let content = document.getElementsByClassName("Form");
-    content[0].parentNode.removeChild(content[0]);
+    $(".Catalogo").fadeOut("fast")
+    $(".Form").fadeOut("fast");
 }
+
+
 
 
 
