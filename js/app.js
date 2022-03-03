@@ -34,6 +34,15 @@ const COD = new Producto("Call of duty",12000,12,"COD")
 const NSW = new Producto("Nintendo Switch",125000,9,"NSW")
 const lista_productos=[PS5,XBS,DLS,COD,NSW]
 
+class Compra{
+    constructor(nombre,precio,cant) {
+        this.nombre =nombre;
+        this.precio = precio;
+        this.cuotas = cant;
+    }
+}
+
+const guardarLocal = (nombre, valor) => { localStorage.setItem(nombre, valor) };
 
 $("#boton").click(function(){
     enviarAlerta(document.getElementById("opcion").value)
@@ -63,20 +72,29 @@ function enviarAlerta(codigo){
                             </fieldset>
                         </form>`);
     $("#boton2").click(function(){
-        let nro_pagos = document.getElementById("pagos");
-        localStorage.setItem("carrito",nro_pagos)
+        let produ = document.getElementById("pagos").value
+        const comprado = new Compra(nombre_producto(codigo),precio_del_producto(codigo),produ)
+        let procesado = JSON.stringify(comprado)
+        guardarLocal("carrito",procesado)
+
         $("#formulario").fadeOut("fast")
         $("#producto").fadeOut("fast")
+
         $("body").append(`
             <h1>¿Quieres comprar algo más?</h1>`)
+
         $(".Catalogo").fadeIn("fast")
+        $("#contacto").fadeIn("fast")
+
+        let estadoActual = localStorage.getItem("carrito")
+        console.log(JSON.parse(estadoActual))
     });
 }
 
 
 function borrar_catalogo(){
     $(".Catalogo").fadeOut("fast")
-    $(".Form").fadeOut("fast");
+    $("#contacto").fadeOut("fast");
 }
 
 
