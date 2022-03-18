@@ -42,7 +42,7 @@ class Compra{
     }
 }
 
-const guardarLocal = (nombre, valor) => { localStorage.setItem(nombre, valor) };
+const guardarLocal = (nombre, valor) => { sessionStorage.setItem(nombre, valor) };
 
 $("#boton").click(function(){
     enviarAlerta(document.getElementById("opcion").value)
@@ -85,8 +85,7 @@ function enviarAlerta(codigo){
 
         $(".Catalogo").fadeIn("fast")
         $("#contacto").fadeIn("fast")
-
-        let estadoActual = localStorage.getItem("carrito")
+        let estadoActual = sessionStorage.getItem("carrito")
         console.log(JSON.parse(estadoActual))
     });
 }
