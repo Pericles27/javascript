@@ -13,51 +13,40 @@
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@1,300&display=swap" rel="stylesheet">
     </head>
     <body> 
+        <input type="button" value="carrito de compras" id="carro">
         <section class="Catalogo">
             <h1 id="titulo">Catálogo</h1>
             <div class="Prod">
                 <h3>Producto: Playstation 5</h3>
                 <h3>Precio: 150000</h3>
                 <h3>ID del producto: PS5</h3>
+                <input type="button" id="PS5" value="Ver más">
             </div>
             <div class="Prod">
                 <h3>Producto: Xbox series s</h3>
                 <h3>Precio: 140000</h3>
                 <h3>ID del producto: XBS</h3>
+                <input type="button" id="XBS" value="Ver más">
             </div>
             <div class="Prod">
                 <h3>Producto: Nintendo Switch</h3>
                 <h3>Precio: 125000</h3>
                 <h3>ID del producto: NSW</h3>
+                <input type="button" id="NSW" value="Ver más">
             </div>
             <div class="Prod">
                 <h3>Producto: Dualsense</h3>
                 <h3>Precio: 15000</h3>
                 <h3>ID del producto: DLS</h3>
+                <input type="button" id="DLS" value="Ver más">
             </div>
             <div class="Prod">
                 <h3>Producto: Call of Duty</h3>
                 <h3>Precio: 12000</h3>
                 <h3>ID del producto: COD</h3>
+                <input type="button" id="COD" value="Ver más">
             </div>
         </section>
-        <form id="contacto" class="Form" method="post">
-            <fieldset>
-                <Legend>Compra</Legend>
-                <br><br>
-                <label for="Productos"> Eliga el producto que desea comprar:
-                </label>
-                <select name="opciones" id="opcion">
-                    <option value="PS5">Playstation 5</option>
-                    <option value="XBS">Xbox s</option>
-                    <option value="DLS">Dualsense</option>
-                    <option value="NSW">Nintendo Switch</option>
-                    <option value="COD">Call of Duty</option>
-                </select>
-                <br><br>
-                <input type="button" id="boton" value="Enviar">
-            </fieldset>
-        </form>
         <script src="js/jquery-3.6.0.js"></script>
         <script src="js/app.js"></script>   
     </body>

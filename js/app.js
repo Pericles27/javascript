@@ -35,12 +35,16 @@ const NSW = new Producto("Nintendo Switch",125000,9,"NSW")
 const lista_productos=[PS5,XBS,DLS,COD,NSW]
 
 class Compra{
-    constructor(nombre,precio,cant) {
+    constructor(nro_compra,nombre,precio,cant,cuota) {
+        this.nro_compra = nro_compra;
         this.nombre =nombre;
         this.precio = precio;
         this.cuotas = cant;
+        this.valor_cuotas= cuota;
     }
 }
+
+let carro =[]
 
 const guardarLocal = (nombre, valor) => { sessionStorage.setItem(nombre, valor) };
 
@@ -68,38 +72,57 @@ function enviarAlerta(codigo){
                                 <br><br>
                                 <label for="pagos">Ingresá la cantidad de cuotas en las que queres pagar:</label>
                                 <input type="number" name="pagos" min="1" max="${cantidad_cuotas(codigo)}" id="pagos">
-                                <input type="button" id="boton2" value="Enviar">
+                                <input type="button" id="boton2" value="Agregar al carrito">
+                                <input type="button" id="atras" value="Atras">
                             </fieldset>
                         </form>`);
-    $("#boton2").click(function(){
-        let produ = document.getElementById("pagos").value
-        const comprado = new Compra(nombre_producto(codigo),precio_del_producto(codigo),produ)
-        let procesado = JSON.stringify(comprado)
-        guardarLocal("carrito",procesado)
 
-        $("#formulario").fadeOut("fast")
-        $("#producto").fadeOut("fast")
-
-        $("body").append(`
-            <h1>¿Quieres comprar algo más?</h1>`)
-
+    $("#atras").click(function(){
         $(".Catalogo").fadeIn("fast")
-        $("#contacto").fadeIn("fast")
-        let estadoActual = sessionStorage.getItem("carrito")
-        console.log(JSON.parse(estadoActual))
+        $("#formulario").remove()
+        $("#producto").remove()
+    });
+    $("#boton2").click(function(nom){
+        let a = 1
+        let produ = document.getElementById("pagos").value
+        let valor = precio_del_producto(codigo)/produ
+        let compra = new Compra(a,nombre_producto(codigo),precio_del_producto(codigo),produ,valor)
+        carro.push(compra)
+        a = a +1
+        $("#formulario").remove()
+        $("#producto").remove()
+        $(".Catalogo").fadeIn("fast")
     });
 }
 
 
 function borrar_catalogo(){
     $(".Catalogo").fadeOut("fast")
-    $("#contacto").fadeOut("fast");
 }
 
+$("#PS5").click(function(){
+    enviarAlerta("PS5")
+});
 
+$("#XBS").click(function(){
+    enviarAlerta("XBS")
+});
 
+$("#NSW").click(function(){
+    enviarAlerta("NSW")
+});
 
+$("#DLS").click(function(){
+    enviarAlerta("DLS")
+});
 
+$("#COD").click(function(){
+    enviarAlerta("COD")
+});
+
+$("#carro").click(function(){
+    console.log(carro)
+})
 
 
 
